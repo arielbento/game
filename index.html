@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jogo de Brusque</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="scene">
+      <i class="sun"></i><i class="nuvem n1"></i><i class="nuvem n2"></i><i
+        class="nuvem n3"
+      ></i><i class="hill h2"></i><i class="hill h1"></i>
+    </div>
+    <canvas id="confete"></canvas>
+
+    <section id="login" class="screen on">
+      <div class="apresentacao">
+        <span class="selo">Educação Infantil · Pré-escola II</span>
+        <h1>JOGO<br>DE <em>BRUSQUE</em></h1>
+        <p>Aprender brincando com o Pato!</p>
+        <form id="lform" class="glass">
+          <input id="nome" placeholder="Aluno" required autocomplete="off">
+          <div class="form-linha">
+            <input
+              id="idade"
+              type="number"
+              min="3"
+              max="12"
+              placeholder="Idade"
+            ><select id="escola"></select>
+          </div>
+          <button class="botao-principal">Iniciar <span>▶</span></button>
+        </form>
+      </div>
+      <div class="balao oi">Oi!</div>
+      <img
+        class="mascote mascote-login"
+        src="assets/mascote.png"
+        data-fb="🦆"
+        alt=""
+      >
+      <small class="creditos">Ilustrações: Twemoji (CC-BY 4.0)</small>
+      <img
+        class="logo"
+        src="assets/logo.png"
+        data-fb="PREFEITURA DE BRUSQUE"
+        alt=""
+      >
+    </section>
+
+    <section id="levels" class="screen">
+      <div class="topbar">
+        <button id="lvback" class="botao-pequeno">‹ Sair</button>
+        <h1>Onde você quer brincar hoje?</h1><span
+          id="who"
+          class="botao-pequeno"
+        ></span>
+      </div>
+      <div id="lvcards"></div>
+    </section>
+
+    <section id="game" class="screen">
+      <div class="topbar">
+        <button id="gback" class="botao-pequeno">‹ Voltar</button>
+        <div class="progress"><span id="prog"></span><div id="dots"></div></div>
+        <span id="streak" class="botao-pequeno fire"></span><span
+          id="score"
+          class="botao-pequeno"
+        ></span>
+      </div>
+      <div id="panel">
+        <div id="stage"><div id="v"></div></div>
+        <div id="side">
+          <div class="head">
+            <span id="tag"></span><button id="ear" aria-label="Ouvir de novo">
+              🔊
+            </button>
+          </div>
+          <h2 id="q"></h2>
+          <div id="area"></div>
+        </div>
+      </div>
+      <div class="hint">
+        <span id="ht"></span><button id="next">Próxima ➜</button>
+      </div>
+    </section>
+
+    <section id="end" class="screen">
+      <div class="balao grande" id="etxt"></div>
+      <img
+        class="mascote mascote-final"
+        src="assets/mascote.png"
+        data-fb="🦆"
+        alt=""
+      >
+      <div class="mapbox">
+        <img src="assets/mapa.png" data-fb="⛪🏞️🌳" alt="">
+        <p id="esc"></p>
+        <div class="btns">
+          <button id="emenu" class="blue">☰ Menu</button>
+          <button id="eagain" class="blue">↻ Tentar novamente</button>
+        </div>
+      </div>
+    </section>
+    <script src="game.js"></script>
+  </body>
+</html>
