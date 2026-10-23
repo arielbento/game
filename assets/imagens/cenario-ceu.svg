@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/><stop offset=".6" stop-color="#7dd3fc"/><stop offset="1" stop-color="#bae6fd"/>
+    </linearGradient>
+    <linearGradient id="morro" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#86efac"/><stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="frente" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4ade80"/><stop offset="1" stop-color="#16a34a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#ceu)"/>
+  <g fill="none" stroke-width="26" opacity=".62">
+    <circle cx="600" cy="640" r="520" stroke="#f472b6"/>
+    <circle cx="600" cy="640" r="494" stroke="#fdba74"/>
+    <circle cx="600" cy="640" r="468" stroke="#fde047"/>
+    <circle cx="600" cy="640" r="442" stroke="#86efac"/>
+    <circle cx="600" cy="640" r="416" stroke="#67e8f9"/>
+    <circle cx="600" cy="640" r="390" stroke="#93c5fd"/>
+  </g>
+  <g fill="#fff">
+    <g opacity=".95"><ellipse cx="130" cy="150" rx="70" ry="30"/><ellipse cx="90" cy="165" rx="55" ry="26"/><ellipse cx="175" cy="168" rx="60" ry="24"/></g>
+    <g opacity=".95"><ellipse cx="1040" cy="130" rx="80" ry="32"/><ellipse cx="1000" cy="148" rx="58" ry="26"/><ellipse cx="1095" cy="150" rx="62" ry="25"/></g>
+    <g opacity=".9"><ellipse cx="1130" cy="330" rx="60" ry="24"/><ellipse cx="1090" cy="344" rx="46" ry="20"/></g>
+    <g opacity=".9"><ellipse cx="40" cy="360" rx="62" ry="24"/><ellipse cx="85" cy="374" rx="48" ry="20"/></g>
+  </g>
+  <path d="M0 520 Q300 430 620 500 T1200 470 V700 H0z" fill="url(#morro)"/>
+  <path d="M0 590 Q350 520 700 580 T1200 560 V700 H0z" fill="url(#frente)"/>
+</svg>

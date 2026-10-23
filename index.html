@@ -1,114 +1,194 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jogo de Brusque</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    >
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="scene">
-      <i class="sun"></i><i class="nuvem n1"></i><i class="nuvem n2"></i><i
-        class="nuvem n3"
-      ></i><i class="hill h2"></i><i class="hill h1"></i>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jogo Educativo Infantil — Brusque</title>
+  <meta name="description" content="Jogo educativo infantil de Brusque: contagem, cores, sons, sílabas e comparações.">
+  <link rel="icon" type="image/png" href="assets/imagens/nivel-facil.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <noscript><p class="aviso-js">Este jogo precisa de JavaScript ativado no navegador para funcionar.</p></noscript>
+
+  <main id="jogo">
+
+    <section id="tela-inicio" class="tela tela-inicio" aria-labelledby="titulo-inicio">
+      <div class="cenario-inicio">
+        <div class="palco">
+          <img class="palco-fundo" src="assets/imagens/fundo-inicio.jpg" alt="" width="1010" height="707">
+          <div class="mascote-canto">
+            <p class="balao-oi" aria-hidden="true">Oi</p>
+            <div class="avatar-mascote">
+              <img src="assets/imagens/mascote-parabens.png" alt="Mascote do jogo: um pato verde com chapéu e roupa típica de Brusque, dando oi">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form id="form-inicio" class="form-inicio" novalidate autocomplete="off">
+        <h1 id="titulo-inicio" class="so-leitor">Jogo educativo de Brusque: informe os dados do aluno</h1>
+
+        <div class="campo">
+          <label class="so-leitor" for="campo-nome">Nome do aluno</label>
+          <input id="campo-nome" name="aluno" type="text" placeholder="Aluno" maxlength="40" autocomplete="off" aria-describedby="erro-nome">
+          <p id="erro-nome" class="erro-campo" role="alert"></p>
+        </div>
+
+        <div class="campo">
+          <label class="so-leitor" for="campo-idade">Idade</label>
+          <input id="campo-idade" name="idade" type="number" inputmode="numeric" min="3" max="12" step="1" placeholder="Idade" aria-describedby="erro-idade">
+          <p id="erro-idade" class="erro-campo" role="alert"></p>
+        </div>
+
+        <div class="campo">
+          <label class="so-leitor" for="campo-escola">Escola</label>
+          <select id="campo-escola" name="escola" required aria-describedby="erro-escola">
+            <option value="" selected disabled>Escola</option>
+          </select>
+          <p id="erro-escola" class="erro-campo" role="alert"></p>
+        </div>
+
+        <button id="btn-iniciar" class="btn btn-iniciar" type="submit">Iniciar</button>
+      </form>
+
+      <div class="marcas">
+        <div class="aba-prefeitura"><img src="assets/imagens/logo-prefeitura.png" alt="Prefeitura de Brusque"></div>
+        <img class="logo-educacao" src="assets/imagens/logo-educacao.png" alt="Logotipo da educação de Brusque">
+      </div>
+      <button type="button" class="btn-som-flutuante js-som" aria-pressed="true"></button>
+    </section>
+
+    <section id="tela-niveis" class="tela tela-cenario" aria-labelledby="titulo-niveis" hidden>
+      <header class="barra-topo">
+        <button type="button" id="btn-voltar-inicio" class="btn btn-suave"><span aria-hidden="true">↩️</span> Voltar</button>
+        <h2 id="titulo-niveis" tabindex="-1">Onde você quer brincar hoje?</h2>
+        <button type="button" class="btn btn-som js-som" aria-pressed="true"></button>
+      </header>
+
+      <div class="grade-niveis">
+        <article class="cartao-nivel" data-nivel="facil" style="--i:0">
+          <span class="selo-nivel"><span aria-hidden="true">🦆</span> Nível fácil</span>
+          <img class="icone-nivel" src="assets/imagens/nivel-facil.png" alt="Patinho amarelo nadando no lago" width="160" height="160">
+          <h3>Lago dos Patinhos</h3>
+          <p class="tema-nivel">Contagem até 5 &amp; Cores</p>
+          <p class="descricao-nivel">Atividades visuais intuitivas com contagem e formas lúdicas.</p>
+          <button type="button" class="btn btn-nivel" data-nivel="facil">Jogar Nível Fácil <span aria-hidden="true">🦆</span></button>
+        </article>
+
+        <article class="cartao-nivel" data-nivel="medio" style="--i:1">
+          <span class="selo-nivel"><span aria-hidden="true">🎵</span> Nível médio</span>
+          <img class="icone-nivel" src="assets/imagens/nivel-medio.png" alt="Passarinho azul cantando em um galho" width="160" height="160">
+          <h3>Jardim dos Sons</h3>
+          <p class="tema-nivel">Sons dos Animais &amp; Sílabas</p>
+          <p class="descricao-nivel">Consciência fonológica, rimas e separação silábica simples.</p>
+          <button type="button" class="btn btn-nivel" data-nivel="medio">Jogar Nível Médio <span aria-hidden="true">🎵</span></button>
+        </article>
+
+        <article class="cartao-nivel" data-nivel="dificil" style="--i:2">
+          <span class="selo-nivel"><span aria-hidden="true">🐘</span> Nível difícil</span>
+          <img class="icone-nivel" src="assets/imagens/nivel-dificil.png" alt="Elefante cinza sorrindo na floresta" width="160" height="160">
+          <h3>Floresta dos Desafios</h3>
+          <p class="tema-nivel">Noções Espaciais &amp; Comparação</p>
+          <p class="descricao-nivel">Comparações maior/menor, dentro/fora e sequências lógicas.</p>
+          <button type="button" class="btn btn-nivel" data-nivel="dificil">Jogar Nível Difícil <span aria-hidden="true">🐘</span></button>
+        </article>
+      </div>
+    </section>
+
+    <section id="tela-pergunta" class="tela tela-cenario tela-jogo" aria-label="Pergunta do jogo" hidden>
+      <header class="barra-jogo">
+        <button type="button" id="btn-sair" class="btn btn-suave"><span aria-hidden="true">↩️</span> Sair</button>
+        <div class="progresso">
+          <span id="rotulo-progresso" class="rotulo-progresso">Pergunta 1 de 5</span>
+          <div class="trilho" id="trilho-progresso" role="progressbar" aria-label="Progresso da partida" aria-valuemin="0" aria-valuemax="5" aria-valuenow="1">
+            <div id="barra-progresso" class="preenchimento"></div>
+          </div>
+        </div>
+        <div class="placar-topo">
+          <span id="placar-pontos" class="chip-pontos"><span aria-hidden="true">⭐</span> 0 Pontos</span>
+          <button type="button" class="btn-icone js-som" aria-pressed="true"></button>
+        </div>
+      </header>
+
+      <div id="cartao-pergunta" class="cartao-pergunta">
+        <div class="painel-ilustracao">
+          <span id="local-pergunta" class="chip-local"></span>
+          <div id="ilustracao" class="ilustracao"></div>
+        </div>
+
+        <div class="conteudo-pergunta">
+          <div class="cabecalho-pergunta">
+            <div class="titulo-pergunta">
+              <span id="categoria-pergunta" class="chip-categoria"></span>
+              <h2 id="enunciado" tabindex="-1"></h2>
+            </div>
+            <button type="button" id="btn-ouvir" class="btn-ouvir" aria-label="Ouvir a pergunta"><span aria-hidden="true">🔊</span></button>
+          </div>
+
+          <p id="balao-som" class="balao-som" role="status" hidden></p>
+          <div id="opcoes" class="opcoes" role="group" aria-labelledby="enunciado"></div>
+
+          <div id="feedback" class="feedback" role="status" aria-live="polite" hidden>
+            <p id="feedback-texto" class="feedback-texto"></p>
+            <button type="button" id="btn-proxima" class="btn btn-nivel-cor">Próxima pergunta</button>
+          </div>
+
+          <p id="dica" class="dica"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tela-final-otimo" class="tela tela-final" aria-labelledby="mensagem-otimo" hidden>
+      <div class="final-grade">
+        <div class="final-mascote">
+          <div class="balao-fala"><p id="mensagem-otimo" tabindex="-1">Parabéns, você já tem bastante conhecimento geral.</p></div>
+          <img class="mascote-final mascote-comemora" src="assets/imagens/mascote-parabens.png" alt="Mascote pato verde comemorando com o polegar para cima">
+        </div>
+        <div class="final-mapa">
+          <img class="mapa" src="assets/imagens/mapa-brusque.png" alt="Mapa ilustrado de Brusque com igreja, ponte, rio e a bandeira da cidade">
+          <div class="resultado" id="resultado-otimo"></div>
+          <div class="botoes-final">
+            <button type="button" class="btn btn-azul js-menu"><span aria-hidden="true" class="icone-botao">☰</span> Menu</button>
+            <button type="button" class="btn btn-azul js-repetir"><span aria-hidden="true" class="icone-botao">↻</span> Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn-som-flutuante js-som" aria-pressed="true"></button>
+    </section>
+
+    <section id="tela-final-incentivo" class="tela tela-final" aria-labelledby="mensagem-incentivo" hidden>
+      <div class="final-grade">
+        <div class="final-mascote">
+          <div class="balao-fala"><p id="mensagem-incentivo" tabindex="-1">Foi super divertido! Vamos jogar de novo para descobrir coisas novas?</p></div>
+          <img class="mascote-final" src="assets/imagens/mascote-incentivo.png" alt="Mascote pato verde com o dedo levantado e um pretzel na cauda, convidando para jogar de novo">
+        </div>
+        <div class="final-mapa">
+          <img class="mapa" src="assets/imagens/mapa-brusque.png" alt="Mapa ilustrado de Brusque com igreja, ponte, rio e a bandeira da cidade">
+          <div class="resultado" id="resultado-incentivo"></div>
+          <div class="botoes-final">
+            <button type="button" class="btn btn-azul js-menu"><span aria-hidden="true" class="icone-botao">☰</span> Menu</button>
+            <button type="button" class="btn btn-azul js-repetir"><span aria-hidden="true" class="icone-botao">↻</span> Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn-som-flutuante js-som" aria-pressed="true"></button>
+    </section>
+  </main>
+
+  <dialog id="dialogo-sair" aria-labelledby="titulo-sair">
+    <h2 id="titulo-sair">Quer mesmo sair?</h2>
+    <p>Se você sair agora, vai perder o progresso desta partida.</p>
+    <div class="dialogo-botoes">
+      <button type="button" id="btn-continuar" class="btn btn-suave">Continuar jogando</button>
+      <button type="button" id="btn-confirmar-sair" class="btn btn-nivel-cor">Sim, sair</button>
     </div>
-    <canvas id="confete"></canvas>
+  </dialog>
 
-    <section id="login" class="screen on">
-      <div class="apresentacao">
-        <span class="selo">Educação Infantil · Pré-escola II</span>
-        <h1>JOGO<br>DE <em>BRUSQUE</em></h1>
-        <p>Aprender brincando com o Pato!</p>
-        <form id="lform" class="glass">
-          <input id="nome" placeholder="Aluno" required autocomplete="off">
-          <div class="form-linha">
-            <input
-              id="idade"
-              type="number"
-              min="3"
-              max="12"
-              placeholder="Idade"
-            ><select id="escola"></select>
-          </div>
-          <button class="botao-principal">Iniciar <span>▶</span></button>
-        </form>
-      </div>
-      <div class="balao oi">Oi!</div>
-      <img
-        class="mascote mascote-login"
-        src="assets/mascote.png"
-        data-fb="🦆"
-        alt=""
-      >
-      <small class="creditos">Ilustrações: Twemoji (CC-BY 4.0)</small>
-      <img
-        class="logo"
-        src="assets/logo.png"
-        data-fb="PREFEITURA DE BRUSQUE"
-        alt=""
-      >
-    </section>
+  <div id="confete" class="confete" aria-hidden="true"></div>
 
-    <section id="levels" class="screen">
-      <div class="topbar">
-        <button id="lvback" class="botao-pequeno">‹ Sair</button>
-        <h1>Onde você quer brincar hoje?</h1><span
-          id="who"
-          class="botao-pequeno"
-        ></span>
-      </div>
-      <div id="lvcards"></div>
-    </section>
-
-    <section id="game" class="screen">
-      <div class="topbar">
-        <button id="gback" class="botao-pequeno">‹ Voltar</button>
-        <div class="progress"><span id="prog"></span><div id="dots"></div></div>
-        <span id="streak" class="botao-pequeno fire"></span><span
-          id="score"
-          class="botao-pequeno"
-        ></span>
-      </div>
-      <div id="panel">
-        <div id="stage"><div id="v"></div></div>
-        <div id="side">
-          <div class="head">
-            <span id="tag"></span><button id="ear" aria-label="Ouvir de novo">
-              🔊
-            </button>
-          </div>
-          <h2 id="q"></h2>
-          <div id="area"></div>
-        </div>
-      </div>
-      <div class="hint">
-        <span id="ht"></span><button id="next">Próxima ➜</button>
-      </div>
-    </section>
-
-    <section id="end" class="screen">
-      <div class="balao grande" id="etxt"></div>
-      <img
-        class="mascote mascote-final"
-        src="assets/mascote.png"
-        data-fb="🦆"
-        alt=""
-      >
-      <div class="mapbox">
-        <img src="assets/mapa.png" data-fb="⛪🏞️🌳" alt="">
-        <p id="esc"></p>
-        <div class="btns">
-          <button id="emenu" class="blue">☰ Menu</button>
-          <button id="eagain" class="blue">↻ Tentar novamente</button>
-        </div>
-      </div>
-    </section>
-    <script src="game.js"></script>
-  </body>
+  <script src="ilustracoes.js"></script>
+  <script src="perguntas.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
